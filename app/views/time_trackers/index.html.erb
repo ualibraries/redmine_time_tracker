@@ -51,7 +51,7 @@
 <% if User.current.allowed_to?(:view_others_time_trackers, nil, :global => true) %>
     <div id="all-time-trackers-list">
         <h3><%= l(:time_tracker_label_other_time_trackers) %></h3>
-        <% if !@time_trackers.empty? %>
+        <% if !@time_trackers.nil? and !@time_trackers.empty? %>
             <div class="autoscroll">
                 <table class="list">
                     <thead>

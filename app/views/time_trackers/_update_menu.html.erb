@@ -7,7 +7,7 @@ The span is populated with current time tracker state.
 (no AJAX request here, this allows to have the time tracker immediately visible)
 -->
 <%= javascript_tag "$(document).ready(function () {
-    $('time-tracker-menu').replace('<span id=\"time-tracker-menu\">#{escape_javascript(((render :partial => 'time_trackers/embed_menu').delete "\n").strip)}</span>');
+    $('#time-tracker-menu').replaceWith('<span id=\"time-tracker-menu\">#{escape_javascript(((render :partial => 'time_trackers/embed_menu').delete "\n").strip)}</span>');
     updateMenu();
     });"
 %>
@@ -17,13 +17,12 @@ This script defines the updateTimeTrackerMenu() function which will update
 the time tracker menu item using an AJAX request to retrieve the data
 -->
 <%= javascript_tag "function updateTimeTrackerMenu() {
-      $.ajax(
-          url : #{url_for :controller => '/time_trackers', :action => 'render_menu', :project_id => (@project.nil? ? nil : @project.id), :issue_id => (@issue.nil? ? nil : @issue.id) },
-          success : function(data, status, jqXHR){
+      $.get(
+          '#{url_for :controller => '/time_trackers', :action => 'render_menu', :project_id => (@project.nil? ? nil : @project.id), :issue_id => (@issue.nil? ? nil : @issue.id) }',
+          function(data, status, jqXHR){
               updateElementIfChanged('time-tracker-menu', data);
             }
-        );
-      }"
+      );}"
 %>
 
 <!--

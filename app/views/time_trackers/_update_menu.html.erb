@@ -8,6 +8,9 @@ The span is populated with current time tracker state.
 -->
 <%= javascript_tag "$(document).ready(function () {
     $('#time-tracker-menu').replaceWith('<span id=\"time-tracker-menu\">#{escape_javascript(((render :partial => 'time_trackers/embed_menu').delete "\n").strip)}</span>');
+    $('#time-tracker-menu').bind('ajax:success', function(event, data, status, xhr){
+        $('#time-tracker-menu').html(data);
+      });
     updateMenu();
     });"
 %>
@@ -21,7 +24,7 @@ the time tracker menu item using an AJAX request to retrieve the data
           '#{url_for :controller => '/time_trackers', :action => 'render_menu', :project_id => (@project.nil? ? nil : @project.id), :issue_id => (@issue.nil? ? nil : @issue.id) }',
           function(data, status, jqXHR){
               var menu = $('#time-tracker-menu');
-              if (menu.innerHTML !== data){ menu.replaceWith(data)};
+              if (menu.html !== data){ menu.html(data)};
             }
       );}"
 %>

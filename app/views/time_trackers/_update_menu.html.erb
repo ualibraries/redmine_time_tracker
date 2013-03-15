@@ -20,7 +20,8 @@ the time tracker menu item using an AJAX request to retrieve the data
       $.get(
           '#{url_for :controller => '/time_trackers', :action => 'render_menu', :project_id => (@project.nil? ? nil : @project.id), :issue_id => (@issue.nil? ? nil : @issue.id) }',
           function(data, status, jqXHR){
-              updateElementIfChanged('time-tracker-menu', data);
+              var menu = $('#time-tracker-menu');
+              if (menu.innerHTML !== data){ menu.replaceWith(data)};
             }
       );}"
 %>

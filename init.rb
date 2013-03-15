@@ -6,11 +6,11 @@ require_dependency 'time_tracker_hooks'
 
 Redmine::Plugin.register :redmine_time_tracker do
     name 'Redmine Time Tracker plugin'
-    author 'Jérémie Delaitre'
+    author 'Moritz Hamann, originally Jérémie Delaitre'
     description 'This is a plugin to track time in Redmine'
-    version '0.4'
+    version '0.5'
 
-    requires_redmine :version_or_higher => '1.1.0'
+    requires_redmine :version_or_higher => '2.1.0'
 
     settings :default => { 'refresh_rate' => '60', 'status_transitions' => {} }, :partial => 'settings/time_tracker'
 

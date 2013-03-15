@@ -6,9 +6,9 @@ This is needed as we want several links for our time tracker menu item.
 The span is populated with current time tracker state.
 (no AJAX request here, this allows to have the time tracker immediately visible)
 -->
-<%= javascript_tag "document.observe('dom:loaded', function () {
-    $('time-tracker-menu').replace(
-    '<span id=\"time-tracker-menu\">#{escape_javascript(((render :partial => 'time_trackers/embed_menu').delete "\n").strip)}</span>');
+<%= javascript_tag "$(document).ready(function () {
+    $('time-tracker-menu').replace('<span id=\"time-tracker-menu\">#{escape_javascript(((render :partial => 'time_trackers/embed_menu').delete "\n").strip)}</span>');
+    updateMenu();
     });"
 %>
 
@@ -17,17 +17,24 @@ This script defines the updateTimeTrackerMenu() function which will update
 the time tracker menu item using an AJAX request to retrieve the data
 -->
 <%= javascript_tag "function updateTimeTrackerMenu() {
-    #{remote_function(
-        :url => { :controller => '/time_trackers', :action => 'render_menu', :project_id => (@project.nil? ? nil : @project.id), :issue_id => (@issue.nil? ? nil : @issue.id) },
-        :before => "Ajax.activeRequestCount--",
-        :complete => "updateElementIfChanged('time-tracker-menu', request.responseText);")
-    };}"
+      $.ajax(
+          url : #{url_for :controller => '/time_trackers', :action => 'render_menu', :project_id => (@project.nil? ? nil : @project.id), :issue_id => (@issue.nil? ? nil : @issue.id) },
+          success : function(data, status, jqXHR){
+              updateElementIfChanged('time-tracker-menu', data);
+            }
+        );
+      }"
 %>
 
 <!--
 This script periodically updates the time tracker menu item to reflect any changes in the tracking state
 Refresh rate is taken from settings. If settings is invalid, 60 secs is used. The minimum value is 5 secs.
 -->
-<%= javascript_tag "new PeriodicalExecuter(updateTimeTrackerMenu, #{[Setting.plugin_redmine_time_tracker['refresh_rate'].to_i == 0 ? 60 : Setting.plugin_redmine_time_tracker['refresh_rate'].to_i, 5].max});" %>
+<%= javascript_tag "function updateMenu(){
+      var intervall = #{[Setting.plugin_redmine_time_tracker['refresh_rate'].to_i == 0 ? 60 : Setting.plugin_redmine_time_tracker['refresh_rate'].to_i, 5].max} * 1000;
+      updateTimeTrackerMenu();
+      setTimeout(updateMenu, intervall);
+    }"
+%>
 
 <% end %>

@@ -78,9 +78,9 @@ class TimeTrackersController < ApplicationController
         time_tracker = TimeTracker.find(:first, :conditions => { :id => params[:id] })
         if !time_tracker.nil?
             time_tracker.destroy
-            render :text => l(:time_tracker_delete_success)
+            render :text => l(:time_tracker_delete_success), :content_type => 'text/html'
         else
-            render :text => l(:time_tracker_delete_fail)
+            render :text => l(:time_tracker_delete_fail), :content_type => 'text/html'
         end
     end
 

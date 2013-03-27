@@ -1,8 +1,10 @@
-= Redmine Time Tracker plugin for Redmine >= 2.x only!!!
+= Redmine Time Tracker plugin for Redmine >= 2.1 only!!!
 
 Time tracker is a Redmine plugin to ease time tracking when working on an issue.
 The plugin allows to start/suspend/resume/stop a timer on a per user basis.
 
+This is a fork of the original version in order to work with the new unobtrusive javascript
+in Rails 3. Full credit for original version goes to Jérémie Delaitre.
 == Features
 
 * Current spent time always visible
@@ -12,12 +14,12 @@ The plugin allows to start/suspend/resume/stop a timer on a per user basis.
 
 == Getting the plugin
 
-The newest version is always at {GitHub}[http://github.com/martinllanos/redmine_time_tracker].
+The newest version is always at {GitHub}[http://github.com/mohikaner/redmine_time_tracker].
 
 == Install
 
 1. Follow the Redmine plugin installation steps at: http://www.redmine.org/wiki/redmine/Plugins Make sure the plugin is installed to <tt>plugins/redmine_time_tracker</tt>
-2. Setup the database using the migrations. <tt>rake db:migrate_plugins RAILS_ENV=production</tt>
+2. Setup the database using the migrations. <tt>rake db:migrate_plugins </tt> (use <tt>RAILS_ENV=production </tt>for production environment)
 3. Login to your Redmine install as an Administrator
 4. Setup the 'log time' permissions for your roles
 5. Add "Time tracking" to the enabled modules for your project

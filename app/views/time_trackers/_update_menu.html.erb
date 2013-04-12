@@ -7,7 +7,6 @@ The span is populated with current time tracker state.
 (no AJAX request here, this allows to have the time tracker immediately visible)
 -->
 <%= javascript_tag "$(document).ready(function () {
-    $('#time-tracker-menu').replaceWith('<span id=\"time-tracker-menu\">#{escape_javascript(((render :partial => 'time_trackers/embed_menu').delete "\n").strip)}</span>');
     $('#time-tracker-menu').bind('ajax:success', function(event, data, status, xhr){
         $('#time-tracker-menu').html(data);
       });

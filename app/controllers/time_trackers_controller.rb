@@ -87,6 +87,7 @@ class TimeTrackersController < ApplicationController
     def render_menu
         @project = Project.find(:first, :conditions => { :id => params[:project_id] })
         @issue = Issue.find(:first, :conditions => { :id => params[:issue_id] })
+        @time_tracker = current
         render :partial => 'embed_menu'
     end
 

@@ -1,3 +1,10 @@
+<div id="time-tracker-context">
+  <%= javascript_tag "// ajax success if in context menu is clicked
+    $('#time-tracker-context').bind('ajax:success', function(event, data, status, xhr){
+      $('#time-tracker-menu').html(data);
+      $('#context-menu').hide();
+    }); " 
+  %>
 <% if !time_tracker.nil? %>
     <% if time_tracker.paused %>
         <%# A time tracker is paused, display the resume action %>
@@ -32,3 +39,4 @@
         %>
     </li>
 <% end %>
+</div>

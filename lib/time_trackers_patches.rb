@@ -67,7 +67,20 @@ module TimeTrackers
   end
 end
 
+module SettingsControllerPatch
+ def self.included(base)
+  base.class_eval do
+    helper TimeTrackersHelper
+  end
+ end
+end
+
+
+
 # now we should include this module in ApplicationHelper module
 unless ApplicationHelper.included_modules.include? TimeTrackers::Patches::ApplicationHelperPatch
     ApplicationHelper.send(:include, TimeTrackers::Patches::ApplicationHelperPatch)
+end
+unless SettingsController.included_modules.include? SettingsControllerPatch
+  SettingsController.send(:include, SettingsControllerPatch)
 end

@@ -4,6 +4,7 @@ require 'redmine'
 
 require_dependency 'time_tracker_hooks'
 
+
 Redmine::Plugin.register :redmine_time_tracker do
     name 'Redmine Time Tracker plugin'
     author 'Moritz Hamann, originally Jérémie Delaitre'
@@ -25,4 +26,20 @@ Redmine::Plugin.register :redmine_time_tracker do
             :param => :project_id,
             :if => Proc.new { User.current.logged? }
         }
+    
+    
+    require 'dispatcher' unless Rails::VERSION::MAJOR >= 3
+    
+    if Rails::VERSION::MAJOR >= 3
+      ActionDispatch::Callbacks.to_prepare do
+        # use require_dependency if you plan to utilize development mode
+        require 'time_trackers_patches'
+      end
+    else
+      Dispatcher.to_prepare BW_AssetHelpers::PLUGIN_NAME do
+        # use require_dependency if you plan to utilize development mode
+        require 'time_trackers_patches'
+      end
+    end        
+    
 end

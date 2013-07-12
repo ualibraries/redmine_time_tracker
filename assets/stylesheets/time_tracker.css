@@ -3,6 +3,10 @@
 .icon-pause { background-image: url(../images/time_pause.png); }
 .icon-stop { background-image: url(../images/time_stop.png); }
 
+#top-menu #account #time-tracker-menu .icon-clock { padding-left: 20px; }
+#top-menu #account #time-tracker-menu .icon-start { padding-left: 20px; }
+#top-menu #account #time-tracker-menu .icon-pause { padding-left: 20px; }
+
 .icon-action {
     background-repeat: no-repeat;
     padding-left: 16px;

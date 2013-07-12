@@ -1,10 +1,12 @@
-= Redmine Time Tracker plugin for Redmine >= 2.1 only!!!
+= Time Tracker plugin for Redmine
 
-Time tracker is a Redmine plugin to ease time tracking when working on an issue.
+Time Tracker is a Redmine plugin to ease time tracking when working on an issue.
 The plugin allows to start/suspend/resume/stop a timer on a per user basis.
 
-This is a fork of the original version in order to work with the new unobtrusive javascript
-in Rails 3. Full credit for original version goes to Jérémie Delaitre.
+This particular fork adds fixes to make Time Tracker work with the {Pepper}[https://github.com/ualibraries/redmine-pepper-theme] theme. Full credit for original version goes to Jérémie Delaitre.
+
+There are various forks of this project around GitHub. For those moving from Redmine 1.x to 2.x, this one has the easiest migration plan.
+
 == Features
 
 * Current spent time always visible
@@ -14,7 +16,7 @@ in Rails 3. Full credit for original version goes to Jérémie Delaitre.
 
 == Getting the plugin
 
-The newest version is always at {GitHub}[http://github.com/mohikaner/redmine_time_tracker].
+The newest version is always at {GitHub}[http://github.com/ualibraries/redmine_time_tracker]. Check the GitHub network graph for other versions. 
 
 == Install
 
@@ -28,22 +30,18 @@ The newest version is always at {GitHub}[http://github.com/mohikaner/redmine_tim
 == Upgrade 
 
 * If you are migrating from version 1.2 then we have to delete table records schema_migrations.
-1. Run a selection in the database;
- <tt>select * from schema_migrations where version like '%time_tracker%';</tt>
-2. Delete the records found;
- <tt>delete from schema_migrations where version like '%redmine_time_tracker-41627c4r%';</tt> or <tt>delete from schema_migrations where version like '%redmine_time_tracker%';</tt>
-3. Copy the plug-in <tt><redmine_root>/plugins/
+1. Run a selection in the database: <tt>select * from schema_migrations where version like '%time_tracker%';</tt>
+2. Delete the records found: <tt>delete from schema_migrations where version like '%redmine_time_tracker-41627c4r%';</tt> or <tt>delete from schema_migrations where version like '%redmine_time_tracker%';</tt>
+3. Copy the plug-in <tt><redmine_root>/plugins/</tt>
 4. Run <tt>rake db:migrate_plugins RAILS_ENV=production</tt>
 
 == Uninstall 
 
 1. Run <tt>rake db:migrate:plugin NAME=redmine_time_tracker VERSION=0 RAILS_ENV=production</tt>
-2. Delete folder <tt><redmine_root>/plugins/redmine_time_tracker</tt> 
+2. Delete folder <tt><redmine_root>/plugins/redmine_time_tracker</tt>
 
-Note: is show display message: Note: The rake task db:migrate:plugin has been deprecated, please use the replacement version redmine:plugins:migrate
-not alarmed, the plugins already uninstalled.
-
-
+Note: if you receive the error "The rake task db:migrate:plugin has been deprecated, please use the replacement version redmine:plugins:migrate"
+don't worry, the plugin's already uninstalled.
 
 == Usage
 

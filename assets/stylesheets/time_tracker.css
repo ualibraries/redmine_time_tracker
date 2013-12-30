@@ -18,16 +18,14 @@
     padding-bottom: 4px;
 }
 
-#top-menu #account #time-tracker-menu a.icon-action { display: inline-block; padding: 8px; border-radius: 3px; }
+#top-menu #account #time-tracker-menu a.icon-action { display: inline-block; padding: 8px; border-radius: 3px; vertical-align: middle;}
 
 .icon-start-action { background: rgba(0,0,0,0.5) url(../images/start.png); }
 .icon-pause-action { background: rgba(0,0,0,0.5) url(../images/pause.png); }
 .icon-stop-action { background: rgba(0,0,0,0.5) url(../images/stop.png); }
 .icon-list-action { background: rgba(0,0,0,0.5) url(../images/list.png); }
 
-#time-tracker-menu { display: block; position: absolute; top: 2em; left: -20px; }
 #top-menu #account #time-tracker-menu { color: black; }
-#top-menu #account #time-tracker-menu a { margin-right: 0px; display: inline; }
 #time-tracker-menu .icon { padding-left: 20px; }
 
 #time-tracker-admin td.start-date,

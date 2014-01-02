@@ -1,11 +1,34 @@
-.icon-clock { background-image: url(../images/clock.gif); }
-.icon-start { background-image: url(../images/time_start.png); }
-.icon-pause { background-image: url(../images/time_pause.png); }
-.icon-stop { background-image: url(../images/time_stop.png); }
+.icon-clock {
+    background-image: url(../images/clock.gif);
+    display: inline-block;
+}
+.icon-start {
+    background-image: url(../images/time_start.png);
+    display: inline-block;
+}
+.icon-stop {
+    background-image: url(../images/time_stop.png);
+    display: inline-block;
+}
+#top-menu #loggedas {
+    height: 22px;
+}
+#top-menu #account {
+    top: 22px;
+}
 
-#top-menu #account #time-tracker-menu .icon-clock { padding-left: 20px; }
-#top-menu #account #time-tracker-menu .icon-start { padding-left: 20px; }
-#top-menu #account #time-tracker-menu .icon-pause { padding-left: 20px; }
+#top-menu #account #time-tracker-menu .icon-clock {
+    padding-left: 20px;
+    display: inline-block;
+}
+#top-menu #account #time-tracker-menu .icon-start {
+    padding-left: 20px;
+    display: inline-block;
+}
+#top-menu #account #time-tracker-menu .icon-pause {
+    padding-left: 20px;
+    display: inline-block;
+}
 
 .icon-action {
     background-repeat: no-repeat;
@@ -18,15 +41,36 @@
     padding-bottom: 4px;
 }
 
-#top-menu #account #time-tracker-menu a.icon-action { display: inline-block; padding: 8px; border-radius: 3px; vertical-align: middle;}
+#top-menu #account #time-tracker-menu a.icon-action {
+    display: inline-block;
+    padding: 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+}
 
-.icon-start-action { background: rgba(0,0,0,0.5) url(../images/start.png); }
-.icon-pause-action { background: rgba(0,0,0,0.5) url(../images/pause.png); }
-.icon-stop-action { background: rgba(0,0,0,0.5) url(../images/stop.png); }
-.icon-list-action { background: rgba(0,0,0,0.5) url(../images/list.png); }
+.icon-start-action {
+    background: rgba(0,0,0,0.5) url(../images/start.png);
+}
+.icon-pause-action {
+    background: rgba(0,0,0,0.5) url(../images/pause.png);
+}
+.icon-stop-action {
+    background: rgba(0,0,0,0.5) url(../images/stop.png);
+}
+.icon-list-action {
+    background: rgba(0,0,0,0.5) url(../images/list.png);
+}
 
-#top-menu #account #time-tracker-menu { color: black; }
-#time-tracker-menu .icon { padding-left: 20px; }
+#top-menu #account #time-tracker-menu {
+    color: black;
+}
+#top-menu #account #time-tracker-menu:hover,
+#top-menu #account #time-tracker-menu a:hover {
+    text-decoration: none;
+}
+#time-tracker-menu .icon {
+    padding-left: 20px;
+}
 
 #time-tracker-admin td.start-date,
 #time-tracker-admin td.spent-time,
@@ -54,4 +98,6 @@
     text-align: center;
 }
 
-#settings form[action="/settings/plugin/redmine_time_tracker"] > div + div { display: none } /* Hack to remove the div opened by redmine before rendering the plugin settings partial */
+#settings form[action="/settings/plugin/redmine_time_tracker"] > div + div {
+    display: none
+} /* Hack to remove the div opened by redmine before rendering the plugin settings partial */

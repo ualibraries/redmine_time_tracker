@@ -10,8 +10,10 @@
     background-image: url(../images/time_stop.png);
     display: inline-block;
 }
-
-#top-menu #account{
+#top-menu #loggedas {
+    height: 22px;
+}
+#top-menu #account {
     top: 22px;
 }
 

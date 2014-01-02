@@ -49,16 +49,16 @@
 }
 
 .icon-start-action {
-    background: rgba(0,0,0,0.5) url(../images/start.png);
+    background: #777 url(../images/start.png);
 }
 .icon-pause-action {
-    background: rgba(0,0,0,0.5) url(../images/pause.png);
+    background: #777 url(../images/pause.png);
 }
 .icon-stop-action {
-    background: rgba(0,0,0,0.5) url(../images/stop.png);
+    background: #777 url(../images/stop.png);
 }
 .icon-list-action {
-    background: rgba(0,0,0,0.5) url(../images/list.png);
+    background: #777 url(../images/list.png);
 }
 
 #top-menu #account #time-tracker-menu {

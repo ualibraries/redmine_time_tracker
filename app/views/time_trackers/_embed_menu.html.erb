@@ -44,10 +44,8 @@
 <% end %>
 
 <% if User.current.allowed_to?(:log_time, nil, :global => true) or User.current.allowed_to?(:view_others_time_trackers, nil, :global => true) %>
-    <span>
-        <%= link_to '',
-            { :controller => '/time_trackers', :action => 'index' },
-            { :class => 'icon-action icon-list-action', :title => l(:list_time_trackers) }
-        %>
-    </span>
+    <%= link_to '',
+        { :controller => '/time_trackers', :action => 'index' },
+        { :class => 'icon-action icon-list-action', :title => l(:list_time_trackers) }
+    %>
 <% end %>
